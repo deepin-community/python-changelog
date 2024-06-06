@@ -1,3 +1,4 @@
-Name: changelog
+Bug-Database: https://github.com/sqlalchemyorg/changelog/issues
+Bug-Submit: https://github.com/sqlalchemyorg/changelog/issues/new
 Repository: https://github.com/sqlalchemyorg/changelog.git
 Repository-Browse: https://github.com/sqlalchemyorg/changelog

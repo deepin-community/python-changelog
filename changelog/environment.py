@@ -15,16 +15,12 @@ class Environment(object):
 
     @classmethod
     def from_document_settings(cls, settings):
-        try:
-            return settings._changelog_env
-        except AttributeError:
-            for cls in cls.env_classes:
-                e = cls.from_document_settings(settings)
-                if e is not None:
-                    settings._changelog_env = e
-                    return e
+        for cls in cls.env_classes:
+            e = cls.from_document_settings(settings)
+            if e is not None:
+                return e
 
-            raise NotImplementedError("TODO")
+        raise NotImplementedError("TODO")
 
     @property
     def temp_data(self):
@@ -32,6 +28,10 @@ class Environment(object):
 
     @property
     def changelog_sections(self):
+        raise NotImplementedError()
+
+    @property
+    def changelog_caption_class(self):
         raise NotImplementedError()
 
     @property
@@ -81,12 +81,20 @@ class DefaultEnvironment(Environment):
         return self.config.get("changelog_sections", [])
 
     @property
+    def changelog_caption_class(self):
+        return self.config.get("changelog_caption_class", "caption")
+
+    @property
     def changelog_inner_tag_sort(self):
         return self.config.get("changelog_inner_tag_sort", [])
 
     @property
     def changelog_hide_sections_from_tags(self):
         return self.config.get("changelog_hide_sections_from_tags", [])
+
+    @property
+    def changelog_hide_tags_in_entry(self):
+        return self.config.get("changelog_hide_tags_in_entry", [])
 
     @property
     def changelog_render_ticket(self):

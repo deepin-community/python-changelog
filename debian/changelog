@@ -1,3 +1,56 @@
+python-changelog (0.6.1-2) unstable; urgency=medium
+
+  * Add run-time dependency on python3-setuptools (closes: #1059661).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 30 Dec 2023 23:02:06 +0300
+
+python-changelog (0.6.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sun, 20 Aug 2023 14:24:46 +0200
+
+python-changelog (0.6.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 24 Jun 2023 21:37:26 +0300
+
+python-changelog (0.6.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 21 May 2023 19:37:52 +0300
+
+python-changelog (0.5.8-1) unstable; urgency=medium
+
+  * New upstream release.
+    - No longer uses rawsource (closes: #1013379).
+  * Bump Standards-Version to 4.6.1, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 26 Jun 2022 19:10:18 +0300
+
+python-changelog (0.5.7-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sat, 12 Feb 2022 21:03:03 +0100
+
+python-changelog (0.5.6-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set field Upstream-Name in debian/copyright.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+  * Remove obsolete field Name from debian/upstream/metadata (already present
+    in machine-readable debian/copyright).
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
+  * Bump Standards-Version to 4.6.0, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 06 Dec 2021 21:57:46 +0300
+
 python-changelog (0.5.5-1) unstable; urgency=medium
 
   * New upstream release.

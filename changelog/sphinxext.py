@@ -1,7 +1,6 @@
 import os
 
 from sphinx.util import logging
-from sphinx.util import status_iterator
 from sphinx.util.console import bold
 from sphinx.util.osutil import copyfile
 
@@ -10,6 +9,11 @@ from .docutils import ChangeLogDirective
 from .docutils import ChangeLogImportDirective
 from .docutils import make_ticket_link
 from .environment import Environment
+
+try:
+    from sphinx.util.display import status_iterator
+except ImportError:
+    from sphinx.util import status_iterator
 
 
 LOG = logging.getLogger(__name__)
@@ -41,12 +45,20 @@ class SphinxEnvironment(Environment):
         return self.sphinx_env.config.changelog_sections
 
     @property
+    def changelog_caption_class(self):
+        return self.sphinx_env.config.changelog_caption_class
+
+    @property
     def changelog_inner_tag_sort(self):
         return self.sphinx_env.config.changelog_inner_tag_sort
 
     @property
     def changelog_hide_sections_from_tags(self):
         return self.sphinx_env.config.changelog_hide_sections_from_tags
+
+    @property
+    def changelog_hide_tags_in_entry(self):
+        return self.sphinx_env.config.changelog_hide_tags_in_entry
 
     @property
     def changelog_render_ticket(self):
@@ -102,8 +114,10 @@ def setup(app):
     app.add_directive("change", ChangeDirective)
     app.add_directive("changelog_imports", ChangeLogImportDirective)
     app.add_config_value("changelog_sections", [], "env")
+    app.add_config_value("changelog_caption_class", "caption", "env")
     app.add_config_value("changelog_inner_tag_sort", [], "env")
     app.add_config_value("changelog_hide_sections_from_tags", False, "env")
+    app.add_config_value("changelog_hide_tags_in_entry", False, "env")
     app.add_config_value("changelog_render_ticket", None, "env")
     app.add_config_value("changelog_render_pullreq", None, "env")
     app.add_config_value("changelog_render_changeset", None, "env")
